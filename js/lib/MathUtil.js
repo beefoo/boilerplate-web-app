@@ -4,9 +4,9 @@ class MathUtil {
   }
 
   static clamp(value, min, max) {
-    let newValue = Math.min(value, max);
-    newValue = Math.max(newValue, min);
-    return newValue;
+    const minCheckValue = Math.min(value, max);
+    const maxCheckValue = Math.max(minCheckValue, min);
+    return maxCheckValue;
   }
 
   static ease(n) {
@@ -27,16 +27,12 @@ class MathUtil {
 
   static norm(value, a, b) {
     const denom = (b - a);
-    if (denom > 0 || denom < 0) {
-      return (1.0 * value - a) / denom;
-    }
+    if (denom > 0 || denom < 0) return (1.0 * value - a) / denom;
     return 0;
   }
 
-  static pad(num, size) {
-    let s = String(num);
-    while (s.length < size) s = `0${s}`;
-    return s;
+  static pad(num, size, padWith = '0') {
+    return String(num).padStart(size, padWith);
   }
 
   static round(value, precision) {
@@ -48,9 +44,7 @@ class MathUtil {
   }
 
   static within(num, min, max) {
-    if (num < min) return false;
-    if (num > max) return false;
-    return true;
+    return (num >= min && num <= max);
   }
 
   static wrap(num, min, max) {
