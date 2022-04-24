@@ -55,5 +55,3 @@ class MathUtil {
     return ((num - min) % delta) + min;
   }
 }
-
-export default MathUtil;
