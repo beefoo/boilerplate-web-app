@@ -9,6 +9,12 @@ class MathUtil {
     return maxCheckValue;
   }
 
+  static distance(x1, y1, x2, y2) {
+    const y = x2 - x1;
+    const x = y2 - y1;
+    return Math.sqrt(x * x + y * y);
+  }
+
   static ease(n) {
     return (Math.sin((n + 1.5) * Math.PI) + 1.0) / 2.0;
   }
@@ -33,6 +39,16 @@ class MathUtil {
 
   static pad(num, size, padWith = '0') {
     return String(num).padStart(size, padWith);
+  }
+
+  // range: (-PI, PI]
+  // 3 o'clock is zero
+  // clockwise goes to PI
+  // counter-clockwise goes to -PI
+  static radiansBetweenPoints(x1, y1, x2, y2) {
+    const dy = y2 - y1;
+    const dx = x2 - x1;
+    return Math.atan2(dy, dx);
   }
 
   static round(value, precision) {
