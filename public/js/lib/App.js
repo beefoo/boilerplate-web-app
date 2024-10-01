@@ -1,12 +1,15 @@
-class App {
+export default class App {
   constructor(options = {}) {
-    const defaults = {};
-    this.options = _.extend({}, defaults, options);
+    const defaults = {
+      el: 'app',
+      debug: false,
+    };
+    this.options = Object.assign(defaults, options);
     this.init();
   }
 
   init() {
-    this.initialized = true;
-    this.$el = $('#app');
+    const { options } = this;
+    this.el = document.getElementById(options.el);
   }
 }

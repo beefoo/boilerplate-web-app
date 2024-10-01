@@ -1,3 +1,3 @@
-(function initApp() {
-  const app = new App({});
-}());
+import App from './lib/App';
+
+const app = new App({});

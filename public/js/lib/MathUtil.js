@@ -1,4 +1,4 @@
-class MathUtil {
+export default class MathUtil {
   static ceilToNearest(value, nearest) {
     return Math.ceil(value / nearest) * nearest;
   }
@@ -32,7 +32,7 @@ class MathUtil {
   }
 
   static norm(value, a, b) {
-    const denom = (b - a);
+    const denom = b - a;
     if (denom > 0 || denom < 0) return (1.0 * value - a) / denom;
     return 0;
   }
@@ -60,7 +60,7 @@ class MathUtil {
   }
 
   static within(num, min, max) {
-    return (num >= min && num <= max);
+    return num >= min && num <= max;
   }
 
   static wrap(num, min, max) {
