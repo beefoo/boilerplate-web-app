@@ -1,9 +1,9 @@
-export default class MathUtil {
+export default class MathHelper {
   static ceilToNearest(value, nearest) {
     return Math.ceil(value / nearest) * nearest;
   }
 
-  static clamp(value, min, max) {
+  static clamp(value, min = 0, max = 1) {
     const minCheckValue = Math.min(value, max);
     const maxCheckValue = Math.max(minCheckValue, min);
     return maxCheckValue;
@@ -27,6 +27,14 @@ export default class MathUtil {
     return (1.0 * b - a) * percent + a;
   }
 
+  static maxList(arr) {
+    return arr.reduce((a, b) => Math.max(a, b), -Infinity);
+  }
+
+  static minList(arr) {
+    return arr.reduce((a, b) => Math.min(a, b), Infinity);
+  }
+
   static mod(n, m) {
     return ((n % m) + m) % m;
   }
@@ -41,6 +49,15 @@ export default class MathUtil {
     return String(num).padStart(size, padWith);
   }
 
+  static parseNumber(value) {
+    const string = `${value}`;
+    if (!isNaN(string) && !isNaN(parseFloat(string))) {
+      if (string.includes('.')) return parseFloat(string);
+      else return parseInt(string, 10);
+    }
+    return value;
+  }
+
   // range: (-PI, PI]
   // 3 o'clock is zero
   // clockwise goes to PI
@@ -51,12 +68,24 @@ export default class MathUtil {
     return Math.atan2(dy, dx);
   }
 
+  static randomBetween(minValue, maxValue) {
+    return Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
+  }
+
   static round(value, precision) {
     return Number(value).toFixed(precision);
   }
 
   static roundToNearest(value, nearest) {
     return Math.round(value / nearest) * nearest;
+  }
+
+  static sum(arr, key = false) {
+    return arr.reduce(
+      (accumulator, item) =>
+        key ? accumulator + item[key] : accumulator + item,
+      0,
+    );
   }
 
   static within(num, min, max) {

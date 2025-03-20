@@ -1,3 +1,5 @@
-import App from './App.js';
+import App from './lib/App.js';
+import StringHelper from './lib/StringHelper.js';
 
-const app = new App({});
+const q = StringHelper.queryParams();
+const _app = new App(q);
